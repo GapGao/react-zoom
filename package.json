@@ -7,7 +7,7 @@
     "react",
     "zoom"
   ],
-  "main": "./dist/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --port 3000 --hot --contentBase ./src --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js"
@@ -22,11 +22,6 @@
     "url": "https://github.com/GapGao/react-zoom/issues"
   },
   "homepage": "https://github.com/GapGao/react-zoom#readme",
-  "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "prop-types": "^15.7.2"
-  },
   "devDependencies": {
     "@babel/core": "^7.8.0",
     "@babel/polyfill": "^7.8.0",
@@ -35,6 +30,9 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "style-loader": "^1.1.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "prop-types": "^15.7.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
