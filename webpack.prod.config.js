@@ -2,22 +2,22 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  mode: 'production',
+  entry: './lib/index.js',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, './dist/'),
     publicPath: '/dist',
+    libraryTarget: 'umd',
+    library: 'reactZoom',
   },
   module: {
     rules: [
       {
         test: /.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
         },
         exclude: /node_modules/
       },
@@ -30,5 +30,9 @@ module.exports = {
   optimization: {
     minimize: true,
   },
-  externals: ['react', 'react-dom', 'prop-types'],
+  externals: {
+    'prop-types': 'prop-types',
+    'react-dom': 'react-dom',
+    react: 'react',
+  },
 };

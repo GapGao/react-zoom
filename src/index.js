@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-import Zoom from "../lib/index";
+import Zoom from "../lib";
 
 const App = () => (
   <Zoom>
