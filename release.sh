@@ -12,7 +12,7 @@ next_version_v="v$next_version"
 
 # goto master branch
 git checkout master
-git pull origin master
+git pull
 
 # update version
 if [ "$(uname)" == "Darwin" ]; then
