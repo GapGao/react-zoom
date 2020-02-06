@@ -10,8 +10,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --port 3000 --hot --contentBase ./src --config webpack.dev.config.js",
-    "build": "webpack --config webpack.prod.config.js",
-    "build:dev": "webpack --config webpack.dev.config.js"
+    "build": "webpack --config webpack.prod.config.js"
   },
   "author": "gaobo_1994@126.com",
   "license": "ISC",
