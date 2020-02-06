@@ -27,6 +27,8 @@ module.exports = {
       },
     ]
   },
+  optimization: {
+    minimize: true,
+  },
   externals: ['react', 'react-dom', 'prop-types'],
-  devtool: 'source-map'
 };

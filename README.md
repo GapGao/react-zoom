@@ -9,7 +9,7 @@
 2. 组件使用
 
 ```js
-import Zoom from '@moka/react-zoom';
+import Zoom from '@mokahr/react-zoom';
 
 /**
  * toolbarRender 自定义toolbar render函数
