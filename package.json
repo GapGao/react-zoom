@@ -1,7 +1,7 @@
 {
   "name": "@mokahr/react-zoom",
   "version": "0.0.3",
-  "description": "zoom hoc for react",
+  "description": "zoom component for react",
   "keywords": [
     "mokahr",
     "react",
