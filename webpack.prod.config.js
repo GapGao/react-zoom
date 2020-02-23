@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist/'),
     publicPath: '/dist',
     libraryTarget: 'umd',
-    library: 'reactZoom',
+    library: 'react-zoom'
   },
   module: {
     rules: [
@@ -20,19 +20,10 @@ module.exports = {
           presets: ['@babel/preset-env', '@babel/preset-react']
         },
         exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
+      }
     ]
   },
-  optimization: {
-    minimize: true,
-  },
   externals: {
-    'prop-types': 'prop-types',
-    'react-dom': 'react-dom',
-    react: 'react',
-  },
+    react: 'react'
+  }
 };
