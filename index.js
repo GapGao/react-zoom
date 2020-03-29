@@ -1,1 +1,228 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react")):"function"==typeof define&&define.amd?define(["react"],t):"object"==typeof exports?exports["react-zoom"]=t(require("react")):e["react-zoom"]=t(e.react)}(window,(function(e){return function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist",n(n.s=1)}([function(t,n){t.exports=e},function(e,t,n){"use strict";n.r(t);var o=n(0),r=n.n(o);function i(e){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function a(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);t&&(o=o.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,o)}return n}function u(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function l(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function c(e){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function s(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var p=function(e){function t(e){var n,o,r;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),o=this,r=c(t).call(this,e),(n=!r||"object"!==i(r)&&"function"!=typeof r?s(o):r).state={zoom:100,isMove:!1,top:0,left:0,oldTop:0,oldLeft:0,oldX:0,oldY:0},n.container=null,n.content=null,n.onContainerChange=function(e){return n.container=e},n.onContentChange=function(e){return n.content=e},n.preventDefault=function(e){return e.preventDefault()},n.onZoom=function(e){return n.setState({zoom:e})},n.onMouseUp=function(){return n.setState({isMove:!1})},n.getContainerSize=n.getContainerSize.bind(s(n)),n.getContentSize=n.getContentSize.bind(s(n)),n.onReset=n.onReset.bind(s(n)),n.onMouseDownHandler=n.onMouseDownHandler.bind(s(n)),n.onMouseMoveHandler=n.onMouseMoveHandler.bind(s(n)),n.onWheelHandler=n.onWheelHandler.bind(s(n)),n}var n,o,p;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,e),n=t,(o=[{key:"componentDidMount",value:function(){this.container.addEventListener("wheel",this.onWheelHandler,{passive:!1}),this.setContentCenter()}},{key:"Unmounting",value:function(){this.container.removeEventListener("wheel",this.onWheelHandler,{passive:!1})}},{key:"getContainerSize",value:function(){return this.container?{containerWidth:this.container.offsetWidth,containerHeight:this.container.offsetHeight}:{containerWidth:0,containerHeight:0}}},{key:"getContentSize",value:function(){return this.content?{contentWidth:this.content.offsetWidth,contentHeight:this.content.offsetHeight}:{contentWidth:0,contentHeight:0}}},{key:"onReset",value:function(){var e=this.props.padding,t=this.getContainerSize(),n=t.containerWidth,o=t.containerHeight,r=this.getContentSize(),i=r.contentWidth,a=r.contentHeight,u=Math.min(Math.floor((o-2*e)/a*100),100),l=Math.min(Math.floor(n/i*100),100),c=Math.min(u,l);this.setState({top:e-(100-c)/100*a/2,left:(n-i)/2,zoom:c})}},{key:"onMouseDownHandler",value:function(e){var t=this.state,n=t.top,o=t.left;this.setState({isMove:!0,oldX:e.clientX,oldY:e.clientY,oldTop:n,oldLeft:o})}},{key:"onMouseMoveHandler",value:function(e){var t=this.state,n=t.oldX,o=t.oldY,r=t.oldTop,i=t.oldLeft,a=r+e.clientY-o,u=i+e.clientX-n;this.setState({top:a,left:u})}},{key:"onWheelHandler",value:function(e){e.stopPropagation(),e.preventDefault();var t=this.props,n=t.minZoom,o=t.maxZoom,r=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?a(Object(n),!0).forEach((function(t){u(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):a(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},this.state);Number.isInteger(e.deltaY)?(r.top-=e.deltaY,r.left-=e.deltaX):e.deltaY<0?r.zoom=Math.min(r.zoom+2,o):r.zoom=Math.max(r.zoom-2,n),this.setState(r)}},{key:"render",value:function(){var e=this.props,t=e.children,n=e.toolbarRender,o=e.minZoom,i=e.maxZoom,a=this.state,u=a.zoom,l=a.isMove,c=a.top,s=a.left;return r.a.createElement("div",{style:{position:"relative",width:"100%",height:"100%",overflow:"hidden"},ref:this.onContainerChange,onMouseDown:this.onMouseDownHandler,onMouseMove:l?this.onMouseMoveHandler:null,onMouseUp:this.onMouseUp,onMouseLeave:this.onMouseUp},n(u,this.onZoom,this.onReset,o,i),r.a.createElement("div",{ref:this.onContentChange,style:{position:"absolute",transform:"scale(".concat(u/100,")"),top:"".concat(c,"px"),left:"".concat(s,"px")}},t))}}])&&l(n.prototype,o),p&&l(n,p),t}(o.Component);p.defaultProps={minZoom:10,maxZoom:200,padding:20,toolbarRender:function(e,t,n){var o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:10,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:200;return r.a.createElement("div",null,r.a.createElement("div",{onClick:n},"复位"),r.a.createElement("div",{onClick:e>o?function(){return t(10*Math.ceil(e/10)-10)}:null},"-"),r.a.createElement("div",null,e,"%"),r.a.createElement("div",{onClick:e<i?function(){return t(10*Math.floor(e/10)+10)}:null},"+"))}},t.default=p}])}));
+'use strict';
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = require('react');
+var React__default = _interopDefault(React);
+
+const toolbarRender = (zoom, onZoom, onReset, minZoom = 10, maxZoom = 200) => React__default.createElement("div", null, React__default.createElement("div", {
+  onClick: onReset
+}, "\u590D\u4F4D"), React__default.createElement("div", {
+  onClick: zoom > minZoom ? () => onZoom(Math.ceil(zoom / 10) * 10 - 10) : null
+}, "-"), React__default.createElement("div", null, zoom, "%"), React__default.createElement("div", {
+  onClick: zoom < maxZoom ? () => onZoom(Math.floor(zoom / 10) * 10 + 10) : null
+}, "+"));
+
+class Zoom extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      zoom: 100,
+      isMove: false,
+      top: 0,
+      left: 0,
+      oldTop: 0,
+      // 按下时的定位top
+      oldLeft: 0,
+      // 按下时的定位left
+      oldX: 0,
+      // 按下时的偏移值x
+      oldY: 0 //按下时的偏移值y
+
+    };
+    this.container = null;
+    this.content = null;
+
+    this.onContainerChange = ref => this.container = ref;
+
+    this.onContentChange = ref => this.content = ref;
+
+    this.preventDefault = e => e.preventDefault();
+
+    this.onZoom = zoom => this.setState({
+      zoom
+    });
+
+    this.onMouseUp = () => this.setState({
+      isMove: false
+    });
+
+    this.getContainerSize = this.getContainerSize.bind(this);
+    this.getContentSize = this.getContentSize.bind(this);
+    this.onReset = this.onReset.bind(this);
+    this.onMouseDownHandler = this.onMouseDownHandler.bind(this);
+    this.onMouseMoveHandler = this.onMouseMoveHandler.bind(this);
+    this.onWheelHandler = this.onWheelHandler.bind(this);
+  }
+
+  componentDidMount() {
+    // 本组件的滚轮相关手势和浏览器触摸板双指左滑返回上一页冲突，解决办法就是阻止浏览器的默认行为
+    this.container.addEventListener('wheel', this.onWheelHandler, {
+      passive: false
+    });
+    this.onReset();
+  }
+
+  Unmounting() {
+    this.container.removeEventListener('wheel', this.onWheelHandler, {
+      passive: false
+    });
+  } // 获取画布大小
+
+
+  getContainerSize() {
+    if (this.container) {
+      return {
+        containerWidth: this.container.offsetWidth,
+        containerHeight: this.container.offsetHeight
+      };
+    }
+
+    return {
+      containerWidth: 0,
+      containerHeight: 0
+    };
+  } // 获取内容大小
+
+
+  getContentSize() {
+    if (this.content) {
+      return {
+        contentWidth: this.content.offsetWidth,
+        contentHeight: this.content.offsetHeight
+      };
+    }
+
+    return {
+      contentWidth: 0,
+      contentHeight: 0
+    };
+  } // 设置可缩放树图位置到画布中心
+
+
+  onReset() {
+    const {
+      padding
+    } = this.props;
+    const {
+      containerWidth,
+      containerHeight
+    } = this.getContainerSize();
+    const {
+      contentWidth,
+      contentHeight
+    } = this.getContentSize();
+    const heightZoom = Math.min(Math.floor((containerHeight - 2 * padding) / contentHeight * 100), 100);
+    const widthZoom = Math.min(Math.floor(containerWidth / contentWidth * 100), 100);
+    const zoom = Math.min(heightZoom, widthZoom);
+    this.setState({
+      top: padding - (100 - zoom) / 100 * contentHeight / 2,
+      left: (containerWidth - contentWidth) / 2,
+      zoom
+    });
+  }
+
+  onMouseDownHandler(event) {
+    const {
+      top,
+      left
+    } = this.state;
+    this.setState({
+      isMove: true,
+      oldX: event.clientX,
+      oldY: event.clientY,
+      oldTop: top,
+      oldLeft: left
+    });
+  } // 鼠标拖拽
+
+
+  onMouseMoveHandler(event) {
+    const {
+      oldX,
+      oldY,
+      oldTop,
+      oldLeft
+    } = this.state;
+    const top = oldTop + event.clientY - oldY;
+    const left = oldLeft + event.clientX - oldX;
+    this.setState({
+      top,
+      left
+    });
+  } // 鼠标滚轮
+
+
+  onWheelHandler(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    const {
+      minZoom,
+      maxZoom
+    } = this.props;
+    const newState = { ...this.state
+    };
+
+    if (Number.isInteger(event.deltaY)) {
+      newState.top -= event.deltaY;
+      newState.left -= event.deltaX;
+    } else if (event.deltaY < 0) {
+      newState.zoom = Math.min(newState.zoom + 2, maxZoom);
+    } else {
+      newState.zoom = Math.max(newState.zoom - 2, minZoom);
+    }
+
+    this.setState(newState);
+  }
+
+  render() {
+    const {
+      children,
+      toolbarRender,
+      minZoom,
+      maxZoom
+    } = this.props;
+    const {
+      zoom,
+      isMove,
+      top,
+      left
+    } = this.state;
+    return React__default.createElement("div", {
+      style: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      },
+      ref: this.onContainerChange,
+      onMouseDown: this.onMouseDownHandler,
+      onMouseMove: isMove ? this.onMouseMoveHandler : null,
+      onMouseUp: this.onMouseUp,
+      onMouseLeave: this.onMouseUp
+    }, toolbarRender(zoom, this.onZoom, this.onReset, minZoom, maxZoom), React__default.createElement("div", {
+      ref: this.onContentChange,
+      style: {
+        position: 'absolute',
+        transform: `scale(${zoom / 100})`,
+        top: `${top}px`,
+        left: `${left}px`
+      }
+    }, children));
+  }
+
+}
+
+Zoom.defaultProps = {
+  // 最小缩放比例 基数 100
+  minZoom: 10,
+  // 最大缩放比例 基数 100
+  maxZoom: 200,
+  // 顶部底部留白 xx px
+  padding: 20,
+  // 自定义toolbar
+  toolbarRender: toolbarRender
+};
+
+module.exports = Zoom;
+//# sourceMappingURL=index.js.map
