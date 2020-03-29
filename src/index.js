@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 
-import Zoom from "../lib";
+import Zoom from '../lib';
 
 const App = () => (
   <Zoom>
@@ -9,4 +9,4 @@ const App = () => (
   </Zoom>
 );
 
-ReactDom.render(<App />, document.getElementById("app"));
+ReactDom.render(<App />, document.getElementById('app'));
